@@ -645,6 +645,9 @@ class Swagger
             } else {
                 $data = get_object_vars($data);
             }
+            if (is_string($data)) { // need to do this since php7.2 throws error when count() on a string
+                return $data;
+            }
             if (count($data) === 0) {
                 return (object) $data; // empty object
             }
